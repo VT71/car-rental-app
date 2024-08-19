@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #d25525;
+  --background-color2: #f7f7f7;
+  --primary-font: "Roboto", sans-serif;
+}
+
+html,
+body,
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.page {
+  padding-left: 80px;
+}
+
+h1 {
+  color: var(--primary-color);
+  font-family: var(--primary-font);
+  font-weight: 500;
+  font-size: 3.5rem;
+  margin: 0;
+}
