@@ -24,8 +24,10 @@
   transition: background-color 0.8s;
 }
 
-.indicator:hover {
-  background-color: var(--primary-color-10);
+.nav-rail-item:hover {
+  .indicator {
+    background-color: var(--primary-color-10);
+  }
 }
 
 .nav-rail-item > .label {
