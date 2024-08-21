@@ -34,6 +34,7 @@ h1 {
 
 /* Material Design Customisations */
 
+/* Text Input Field */
 .mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--outlined.mdc-text-field--focused
   > .mat-mdc-form-field-flex
   > .mdc-notched-outline.mdc-notched-outline--upgraded
@@ -69,4 +70,33 @@ h1 {
 
 .mdc-notched-outline__notch {
   border-left: none !important;
+}
+
+.mat-mdc-form-field {
+  width: 100% !important;
+}
+
+.mat-mdc-form-field-infix {
+  width: 100% !important;
+}
+
+/* Datepicker */
+.mat-datepicker-toggle.mat-datepicker-toggle-active {
+  color: var(--primary-color) !important;
+}
+
+.mat-calendar-body-cell-content.mat-focus-indicator.mat-calendar-body-selected {
+  background-color: var(--primary-color) !important;
+}
+
+.mat-calendar-body-cell:not(.mat-calendar-body-active):hover
+  > .mat-calendar-body-cell-content.mat-focus-indicator {
+  background-color: var(--primary-color-10) !important;
+}
+
+/* Buttons */
+.main.mdc-button.mdc-button--unelevated.mat-mdc-unelevated-button.mat-unthemed.mat-mdc-button-base {
+  background-color: var(--primary-color) !important;
+  height: 56px !important;
+  color: var(--background-color2) !important;
 }

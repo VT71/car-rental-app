@@ -1,6 +1,9 @@
 <section class="root-container">
   <div class="content-wrapper">
-    <div class="heading-container"><h1>Get your dream car today</h1></div>
+    <div class="heading-container">
+      <h1>Get your dream car today</h1>
+      <p class="author-name">By Victor Toma</p>
+    </div>
     <div class="search-form-wrapper">
       <h2 class="search-form-heading">Search your car</h2>
       <form class="search-form">
@@ -17,16 +20,27 @@
             <mat-option [value]="'luton-airport'">Luton Airport</mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field class="example-form-field" appearance="outline">
-          <mat-label>Pick-up Date</mat-label>
-          <input matInput [matDatepicker]="datepicker" />
+        <mat-form-field appearance="outline">
+          <mat-label>Pick-Up Date</mat-label>
+          <input matInput [matDatepicker]="pickupdatepicker" />
           <mat-hint>DD/MM/YYYY</mat-hint>
           <mat-datepicker-toggle
             matIconSuffix
-            [for]="datepicker"
+            [for]="pickupdatepicker"
           ></mat-datepicker-toggle>
-          <mat-datepicker #datepicker> </mat-datepicker>
+          <mat-datepicker #pickupdatepicker> </mat-datepicker>
         </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Drop-Off Date</mat-label>
+          <input matInput [matDatepicker]="dropoffdatepicker" />
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="dropoffdatepicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #dropoffdatepicker> </mat-datepicker>
+        </mat-form-field>
+        <button mat-flat-button class="main" type="submit">Submit</button>
       </form>
     </div>
   </div>
