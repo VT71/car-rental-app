@@ -7,8 +7,25 @@
         <mat-form-field appearance="outline">
           <mat-label>Pick-Up</mat-label>
           <mat-select>
-            <mat-option [value]="1">Central London</mat-option>
+            <mat-option [value]="'central-london'">Central London</mat-option>
+            <mat-option [value]="'heathrow-airport'"
+              >Heathrow Airport</mat-option
+            >
+            <mat-option [value]="'stansted-airport'"
+              >Stansted Airport</mat-option
+            >
+            <mat-option [value]="'luton-airport'">Luton Airport</mat-option>
           </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-form-field" appearance="outline">
+          <mat-label>Pick-up Date</mat-label>
+          <input matInput [matDatepicker]="datepicker" />
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="datepicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #datepicker> </mat-datepicker>
         </mat-form-field>
       </form>
     </div>
