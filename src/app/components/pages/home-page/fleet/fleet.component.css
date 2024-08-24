@@ -1,4 +1,104 @@
-.root-container {
-    width: 100%;
-    height: 500px;
+.root-container,
+.fleet-wrapper {
+  width: 100%;
+}
+
+.fleet-wrapper {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.fleet-item {
+  height: 350px;
+  width: calc((100% - 4rem) / 3);
+  background-color: var(--background-color2);
+  border-radius: 16px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.fleet-item > .image {
+  width: 100%;
+  height: 40%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background-image: url("../../../../../assets/images/fleet1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.price-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 18px;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.price-container > .price {
+  font-family: var(--primary-font);
+  font-weight: 600;
+  color: var(--tertiary-color);
+  margin: 0;
+  font-size: 0.6rem;
+}
+
+.fleet-item > .description-wrapper {
+  width: 100%;
+  height: calc(100% - 40% - 40px);
+  overflow: auto;
+}
+
+.fleet-item > .description-wrapper > .title {
+  font-family: var(--primary-font);
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin: 0;
+  margin-top: 0.6rem;
+}
+
+.fleet-item > .description-wrapper > .description {
+  font-family: var(--primary-font);
+  font-weight: 400;
+  font-size: 0.7rem;
+  margin: 0;
+  margin-top: 0.8rem;
+}
+
+.description-wrapper > .stats-container {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.stat > span {
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.stat > p {
+  font-family: var(--primary-font);
+  font-weight: 400;
+  font-size: 0.6rem;
+}
+
+button.filled-tonal {
+  width: 100%;
 }
