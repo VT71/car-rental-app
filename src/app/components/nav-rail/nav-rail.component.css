@@ -2,7 +2,7 @@
   position: fixed;
   left: 0;
   height: 100vh;
-  width: 80px;
+  width: var(--nav-rail-width);
   background-color: var(--background-color2);
   padding: 3rem 0.5rem;
   display: flex;
@@ -27,9 +27,16 @@
   transition: background-color 0.8s;
 }
 
-.nav-rail-item:hover {
+.nav-rail-item:hover,
+.nav-rail-item.active {
   .indicator {
-    background-color: var(--primary-color-10);
+    background-color: var(--primary-color-15);
+  }
+}
+
+.nav-rail-item.active:active {
+  .indicator {
+    background-color: var(--primary-color-15);
   }
 }
 
@@ -42,8 +49,8 @@
   margin-top: 0.4rem;
 }
 
-.nav-rail-item.active {
+.nav-rail-item.active:hover {
   .indicator {
-    background-color: var(--primary-color-10);
+    background-color: var(--primary-color-30);
   }
 }
