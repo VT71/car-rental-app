@@ -3,7 +3,7 @@
   --primary-color: rgb(210, 85, 37);
   --primary-color-10: rgba(210, 85, 37, 0.1);
   --primary-color-15: rgba(210, 85, 37, 0.15);
-  --primary-color-30: rgba(210, 85, 37, 0.30);
+  --primary-color-30: rgba(210, 85, 37, 0.3);
   --secondary-color: rgb(0, 0, 0);
   --tertiary-color: rgb(255, 255, 255);
   --secondary-container: rgb(210 85 37 / 15%);
@@ -35,7 +35,8 @@ h1 {
   margin: 0;
 }
 
-section {
+section,
+footer {
   padding: 2.5rem 2rem;
 }
 

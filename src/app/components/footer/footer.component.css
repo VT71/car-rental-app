@@ -1,0 +1,13 @@
+footer {
+    padding-top: 0;
+}
+
+footer, .content-wrapper {
+    width: 100%;
+}
+
+.content-wrapper {
+  background-color: var(--background-color2);
+  border-radius: 16px;
+  padding: 1rem;
+}
