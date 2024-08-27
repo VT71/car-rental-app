@@ -1,13 +1,36 @@
-footer {
-    padding-top: 0;
-}
-
-footer, .content-wrapper {
-    width: 100%;
+footer,
+.content-wrapper {
+  width: 100%;
 }
 
 .content-wrapper {
   background-color: var(--background-color2);
   border-radius: 16px;
   padding: 1rem;
+}
+
+h2 {
+  font-family: var(--primary-font);
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-family: var(--primary-font);
+  font-weight: 300;
+}
+
+.address-wrapper,
+.contact-wrapper {
+  flex: 1;
+}
+
+.bold {
+    font-weight: 500;
 }
