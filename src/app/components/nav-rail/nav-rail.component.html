@@ -4,6 +4,7 @@
     routerLink="/"
     fragment="home-intro-section"
     routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
   >
     <div class="indicator">
       <span class="material-symbols-outlined"> home </span>
@@ -16,7 +17,7 @@
     </div>
     <p class="label">Account</p>
   </a>
-  <a class="nav-rail-item">
+  <a class="nav-rail-item" routerLink="/fleet" routerLinkActive="active">
     <div class="indicator">
       <span class="material-symbols-outlined"> directions_car </span>
     </div>
