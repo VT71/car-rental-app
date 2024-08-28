@@ -54,3 +54,17 @@
     background-color: var(--primary-color-30);
   }
 }
+
+@media screen and (max-width: 600px) {
+  .root-container {
+    position: fixed;
+    bottom: 0;
+    height: var(--nav-bar-height);
+    width: 100%;
+    padding: 0 1rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 1000;
+  }
+}

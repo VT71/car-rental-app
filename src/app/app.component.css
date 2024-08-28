@@ -7,3 +7,10 @@
   height: 100vh;
   padding-left: var(--nav-rail-width);
 }
+
+@media screen and (max-width: 600px) {
+  .page-wrapper {
+    padding-left: 0;
+    padding-bottom: var(--nav-bar-height);
+  }
+}

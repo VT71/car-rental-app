@@ -11,6 +11,7 @@
   --background-color2: #f7f7f7;
   --primary-font: "Roboto", sans-serif;
   --nav-rail-width: 80px;
+  --nav-bar-height: 80px;
 }
 
 html,
@@ -67,6 +68,12 @@ button.filled-tonal:hover {
   -webkit-box-shadow: 0px 3px 10px -5px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 3px 10px -5px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 3px 10px -5px rgba(0, 0, 0, 0.75);
+}
+
+@media screen and (max-width: 600px) {
+  footer {
+    padding-bottom: calc(var(--nav-bar-height) + 2rem);
+  }
 }
 
 /* Material Design Customisations */
