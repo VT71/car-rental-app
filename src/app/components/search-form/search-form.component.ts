@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -26,4 +26,6 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
   templateUrl: './search-form.component.html',
   styleUrl: './search-form.component.css',
 })
-export class SearchFormComponent {}
+export class SearchFormComponent {
+  @Input() showFormTitle!: boolean;
+}
