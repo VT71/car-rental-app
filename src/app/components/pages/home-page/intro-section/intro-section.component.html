@@ -5,43 +5,7 @@
       <p class="author-name">By Victor Toma</p>
     </div>
     <div class="search-form-wrapper">
-      <h2 class="search-form-heading">Search your car</h2>
-      <form class="search-form">
-        <mat-form-field appearance="outline">
-          <mat-label>Pick-Up</mat-label>
-          <mat-select>
-            <mat-option [value]="'central-london'">Central London</mat-option>
-            <mat-option [value]="'heathrow-airport'"
-              >Heathrow Airport</mat-option
-            >
-            <mat-option [value]="'stansted-airport'"
-              >Stansted Airport</mat-option
-            >
-            <mat-option [value]="'luton-airport'">Luton Airport</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Pick-Up Date</mat-label>
-          <input matInput [matDatepicker]="pickupdatepicker" />
-          <mat-hint>DD/MM/YYYY</mat-hint>
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="pickupdatepicker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #pickupdatepicker> </mat-datepicker>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Drop-Off Date</mat-label>
-          <input matInput [matDatepicker]="dropoffdatepicker" />
-          <mat-hint>DD/MM/YYYY</mat-hint>
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="dropoffdatepicker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #dropoffdatepicker> </mat-datepicker>
-        </mat-form-field>
-        <button mat-flat-button class="main" type="submit">Submit</button>
-      </form>
+      <app-search-form></app-search-form>
     </div>
   </div>
 </section>

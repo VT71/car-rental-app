@@ -5,12 +5,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
-import { SearchFormComponent } from '../../../search-form/search-form.component';
 
 @Component({
-  selector: 'app-intro-section',
+  selector: 'app-search-form',
   standalone: true,
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
@@ -23,9 +22,8 @@ import { SearchFormComponent } from '../../../search-form/search-form.component'
     MatSelectModule,
     MatDatepickerModule,
     MatButtonModule,
-    SearchFormComponent
   ],
-  templateUrl: './intro-section.component.html',
-  styleUrl: './intro-section.component.css',
+  templateUrl: './search-form.component.html',
+  styleUrl: './search-form.component.css',
 })
-export class IntroSectionComponent {}
+export class SearchFormComponent {}
