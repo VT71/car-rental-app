@@ -2,11 +2,9 @@
   @if($apiCars | async; as apiCars) { @for (car of apiCars; track car) {
   <div class="fleet-item">
     <div class="image-wrapper">
-      <img
-        [src]="car.pictureUrl"
-      />
+      <img [src]="car.pictureUrl" />
       <div class="price-container">
-        <p class="price">From £80/Day</p>
+        <p class="price">From {{ currencySign }}{{ car.dayPrice }}/Day</p>
       </div>
     </div>
     <div class="description-wrapper">
