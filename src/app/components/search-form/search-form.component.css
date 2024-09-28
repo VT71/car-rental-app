@@ -18,8 +18,12 @@
 }
 
 button.main {
-  width: 40% !important;
+  width: 20% !important;
   font-size: 1rem !important;
+}
+
+.mat-mdc-form-field {
+  width: 24% !important;
 }
 
 @media screen and (max-width: 800px) {
