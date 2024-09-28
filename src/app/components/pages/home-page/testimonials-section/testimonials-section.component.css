@@ -69,3 +69,23 @@
   color: var(--secondary-color);
   opacity: 0.6;
 }
+
+@media screen and (max-width: 800px) {
+  .review {
+    height: 200px;
+  }
+  .material-icons {
+    font-size: 1rem;
+  }
+  mat-icon {
+    height: 1rem;
+    width: 1rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .review {
+    height: 160px;
+    width: 100%;
+  }
+}
