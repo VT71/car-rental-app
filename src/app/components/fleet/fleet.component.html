@@ -8,11 +8,11 @@
       </div>
     </div>
     <div class="description-wrapper">
-      <p class="title">{{car.make.name}} {{car.model}}</p>
+      <p class="title">{{ car.make.name }} {{ car.model }}</p>
       <div class="stats-container">
         <div class="stat">
           <span class="material-symbols-outlined"> auto_transmission </span>
-          <p>auto</p>
+          <p>{{ car.transmissionType === 0 ? "auto" : "manual" }}</p>
         </div>
         <div class="stat">
           <span class="material-symbols-outlined"> local_gas_station </span>
