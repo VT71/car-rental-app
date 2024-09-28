@@ -18,9 +18,10 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([authHttpInterceptorFn])),
     provideAuth0({
       ...environment.auth0,
-      httpInterceptor: {
-        allowedList: [`${environment.api.serverUrl}/Car`],
-      },
+      // To uncomment when adding authorized calls
+      //   httpInterceptor: {
+      //     allowedList: [`${environment.api.serverUrl}/Car`],
+      //   },
     }),
   ],
 };
