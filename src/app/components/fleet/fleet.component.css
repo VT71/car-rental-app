@@ -102,3 +102,15 @@
 button.filled-tonal {
   width: 100%;
 }
+
+@media screen and (max-width: 800px) {
+  .fleet-item {
+    width: calc((100% - 2rem) / 2);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .fleet-item {
+    width: 100%;
+  }
+}
