@@ -6,6 +6,7 @@ export interface Car {
   makeId: number;
   make: Make;
   description: string;
+  dayPrice: number;
   pictureUrl: string;
   deposit: number;
   seats: number;
