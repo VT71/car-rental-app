@@ -12,6 +12,6 @@ export class CarsApiService {
   private http = inject(HttpClient);
 
   getIp(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/Car`); // Assuming the endpoint is /ip
+    return this.http.get(`${this.apiUrl}/Car`);
   }
 }
