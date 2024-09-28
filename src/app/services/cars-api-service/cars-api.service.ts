@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Car } from '../../interfaces/car';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ export class CarsApiService {
 
   private http = inject(HttpClient);
 
-  getIp(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/Car`);
+  getAll(): Observable<Car[]> {
+    return this.http.get<Car[]>(`${this.apiUrl}/Car`);
   }
 }
