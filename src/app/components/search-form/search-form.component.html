@@ -12,6 +12,15 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="outline">
+    <mat-label>Drop-Off</mat-label>
+    <mat-select>
+      <mat-option [value]="'central-london'">Central London</mat-option>
+      <mat-option [value]="'heathrow-airport'">Heathrow Airport</mat-option>
+      <mat-option [value]="'stansted-airport'">Stansted Airport</mat-option>
+      <mat-option [value]="'luton-airport'">Luton Airport</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
     <mat-label>Pick-Up Date</mat-label>
     <input matInput [matDatepicker]="pickupdatepicker" />
     <mat-hint>DD/MM/YYYY</mat-hint>
