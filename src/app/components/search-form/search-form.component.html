@@ -1,10 +1,11 @@
 @if (showFormTitle !== false) {
 <h2 class="search-form-heading">Search your car</h2>
-} @if ($locationsData | async; as locationsData) {
-<form class="search-form">
+} @if (locationsData) {
+<form class="search-form" [formGroup]="searchForm" (submit)="onSubmit()">
   <mat-form-field appearance="outline">
     <mat-label>Pick-Up</mat-label>
-    <mat-select>
+    <mat-select [required]="true" formControlName="pickUpLocation">
+      <mat-option [value]="{ id: 100 }">{{ "Wrong stuff" }}</mat-option>
       @for (location of locationsData[0]; track location) {
       <mat-option [value]="location">{{ location.name }}</mat-option>
       }
@@ -12,7 +13,8 @@
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Drop-Off</mat-label>
-    <mat-select>
+    <mat-select [required]="true" formControlName="dropOffLocation">
+      <mat-option [value]="{ id: 100 }">{{ "Wrong stuff" }}</mat-option>
       @for (location of locationsData[1]; track location) {
       <mat-option [value]="location">{{ location.name }}</mat-option>
       }
@@ -20,7 +22,12 @@
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Pick-Up Date</mat-label>
-    <input matInput [matDatepicker]="pickupdatepicker" />
+    <input
+      matInput
+      [matDatepicker]="pickupdatepicker"
+      formControlName="pickUpDateTime"
+      required
+    />
     <mat-hint>DD/MM/YYYY</mat-hint>
     <mat-datepicker-toggle
       matIconSuffix
@@ -30,7 +37,12 @@
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Drop-Off Date</mat-label>
-    <input matInput [matDatepicker]="dropoffdatepicker" />
+    <input
+      matInput
+      [matDatepicker]="dropoffdatepicker"
+      formControlName="dropOffDateTime"
+      required=""
+    />
     <mat-hint>DD/MM/YYYY</mat-hint>
     <mat-datepicker-toggle
       matIconSuffix
