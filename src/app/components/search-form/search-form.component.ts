@@ -9,6 +9,8 @@ import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { LocationsApiService } from '../../services/locations-api-service/locations-api.service';
 import { combineLatest, forkJoin, from, Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
+import { RentalLocation } from '../../interfaces/rental-location';
 
 @Component({
   selector: 'app-search-form',
@@ -24,6 +26,7 @@ import { combineLatest, forkJoin, from, Observable } from 'rxjs';
     MatSelectModule,
     MatDatepickerModule,
     MatButtonModule,
+    AsyncPipe,
   ],
   templateUrl: './search-form.component.html',
   styleUrl: './search-form.component.css',
@@ -33,9 +36,9 @@ export class SearchFormComponent {
 
   private locationsApiService = inject(LocationsApiService);
 
-  public $pickUpLocations: Observable<Location[]> =
+  public $pickUpLocations: Observable<RentalLocation[]> =
     this.locationsApiService.getPickUpLocations();
-  public $dropOffLocations: Observable<Location[]> =
+  public $dropOffLocations: Observable<RentalLocation[]> =
     this.locationsApiService.getDropOffLocations();
   public $locationsData = forkJoin([
     this.$pickUpLocations,
