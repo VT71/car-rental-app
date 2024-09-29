@@ -23,23 +23,14 @@ button.main {
 }
 
 .mat-mdc-form-field {
-  width: 24% !important;
+  width: 18% !important;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   button.main {
     width: 100% !important;
   }
   .mat-mdc-form-field {
-    width: 30% !important;
-  }
-}
-
-@media screen and (max-width: 650px) {
-  .mat-mdc-form-field {
-    width: 48% !important;
-  }
-  .mat-mdc-form-field:first-child {
-    width: 100% !important;
+    width: 49% !important;
   }
 }
