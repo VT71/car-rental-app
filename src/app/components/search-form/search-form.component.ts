@@ -60,15 +60,50 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   public locationsData!: RentalLocation[][];
 
   private formBuilder = inject(FormBuilder);
-  public searchForm = this.formBuilder.group({
-    pickUpLocation: ['', [Validators.required]],
-    dropOffLocation: ['', [Validators.required]],
-    pickUpDateTime: ['', [Validators.required]],
-    dropOffDateTime: ['', [Validators.required]],
-  });
+  public searchForm = this.formBuilder.group(
+    {
+      pickUpLocation: ['', [Validators.required]],
+      dropOffLocation: ['', [Validators.required]],
+      pickUpDateTime: ['', [Validators.required]],
+      dropOffDateTime: ['', [Validators.required]],
+    },
+    { validators: this.datesValidator }
+  );
 
   onSubmit() {
-    // console.log('FORM DATA: ' + JSON.stringify(this.searchForm.getRawValue()));
+    console.log('FORM DATA: ' + JSON.stringify(this.searchForm.getRawValue()));
+    if (this.searchForm.valid) {
+      console.log('Form Valid');
+    }
+  }
+
+  private datesValidator(control: AbstractControl): ValidationErrors | null {
+    const pickUpDateTimeInput = control.get('pickUpDateTime');
+    const pickUpDateTimeObject = new Date(pickUpDateTimeInput?.value);
+    const dropOffDateTimeInput = control.get('dropOffDateTime');
+    const dropOffDateTimeObject = new Date(dropOffDateTimeInput?.value);
+
+    const todayDateTime = new Date();
+
+    let errors = {
+      pickUpDateTime: { error: false },
+      dropOffDateTime: { error: false },
+    };
+
+    if (pickUpDateTimeObject < todayDateTime) {
+      errors.pickUpDateTime = { error: true };
+      control.get('pickUpDateTime')?.setErrors({ invalidDate: true });
+    }
+
+    if (dropOffDateTimeObject < pickUpDateTimeObject) {
+      errors.dropOffDateTime = { error: true };
+      control.get('dropOffDateTime')?.setErrors({ invalidDate: true });
+    }
+
+    return pickUpDateTimeObject < todayDateTime ||
+      dropOffDateTimeObject < pickUpDateTimeObject
+      ? null
+      : { invalidDates: { value: control.value } };
   }
 
   private locationValidator(locations: RentalLocation[]): ValidatorFn {

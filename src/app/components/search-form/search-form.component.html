@@ -3,6 +3,7 @@
 } @if (locationsData) {
 <form class="search-form" [formGroup]="searchForm" (submit)="onSubmit()">
   <mat-form-field appearance="outline">
+    <mat-error>Select a pick-up location</mat-error>
     <mat-label>Pick-Up</mat-label>
     <mat-select [required]="true" formControlName="pickUpLocation">
       @for (location of locationsData[0]; track location) {
@@ -11,6 +12,7 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="outline">
+    <mat-error>Select a drop-off location</mat-error>
     <mat-label>Drop-Off</mat-label>
     <mat-select [required]="true" formControlName="dropOffLocation">
       @for (location of locationsData[1]; track location) {
@@ -19,6 +21,7 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="outline">
+    <mat-error>Invalid pick-up date</mat-error>
     <mat-label>Pick-Up Date</mat-label>
     <input
       matInput
@@ -34,6 +37,7 @@
     <mat-datepicker #pickupdatepicker> </mat-datepicker>
   </mat-form-field>
   <mat-form-field appearance="outline">
+    <mat-error>Invalid drop-off date</mat-error>
     <mat-label>Drop-Off Date</mat-label>
     <input
       matInput
