@@ -7,7 +7,7 @@
     <mat-label>Pick-Up</mat-label>
     <mat-select [required]="true" formControlName="pickUpLocation">
       @for (location of locationsData[0]; track location) {
-      <mat-option [value]="location">{{ location.name }}</mat-option>
+      <mat-option [value]="location.id">{{ location.name }}</mat-option>
       }
     </mat-select>
   </mat-form-field>
@@ -16,7 +16,7 @@
     <mat-label>Drop-Off</mat-label>
     <mat-select [required]="true" formControlName="dropOffLocation">
       @for (location of locationsData[1]; track location) {
-      <mat-option [value]="location">{{ location.name }}</mat-option>
+      <mat-option [value]="location.id">{{ location.name }}</mat-option>
       }
     </mat-select>
   </mat-form-field>

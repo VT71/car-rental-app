@@ -21,6 +21,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-form',
@@ -48,6 +49,7 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   private locationsApiService = inject(LocationsApiService);
+  private router = inject(Router);
 
   public $pickUpLocations: Observable<RentalLocation[]> =
     this.locationsApiService.getPickUpLocations();
@@ -62,18 +64,24 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   private formBuilder = inject(FormBuilder);
   public searchForm = this.formBuilder.group(
     {
-      pickUpLocation: ['', [Validators.required]],
-      dropOffLocation: ['', [Validators.required]],
-      pickUpDateTime: ['', [Validators.required]],
-      dropOffDateTime: ['', [Validators.required]],
+      pickUpLocation: [null, [Validators.required]],
+      dropOffLocation: [null, [Validators.required]],
+      pickUpDateTime: [null, [Validators.required]],
+      dropOffDateTime: [null, [Validators.required]],
     },
     { validators: this.datesValidator }
   );
 
   onSubmit() {
-    console.log('FORM DATA: ' + JSON.stringify(this.searchForm.getRawValue()));
     if (this.searchForm.valid) {
-      console.log('Form Valid');
+      this.router.navigate(['fleet'], {
+        queryParams: {
+          pickUpLocation: this.searchForm.get('pickUpLocation')?.value,
+          dropOffLocation: this.searchForm.get('dropOffLocation')?.value,
+          pickUpDateTime: this.searchForm.get('pickUpDateTime')?.value,
+          dropOffDateTime: this.searchForm.get('dropOffDateTime')?.value,
+        },
+      });
     }
   }
 
@@ -90,26 +98,26 @@ export class SearchFormComponent implements OnInit, OnDestroy {
       dropOffDateTime: { error: false },
     };
 
-    if (pickUpDateTimeObject < todayDateTime) {
+    if (pickUpDateTimeObject <= todayDateTime) {
       errors.pickUpDateTime = { error: true };
       control.get('pickUpDateTime')?.setErrors({ invalidDate: true });
     }
 
-    if (dropOffDateTimeObject < pickUpDateTimeObject) {
+    if (dropOffDateTimeObject <= pickUpDateTimeObject) {
       errors.dropOffDateTime = { error: true };
       control.get('dropOffDateTime')?.setErrors({ invalidDate: true });
     }
 
-    return pickUpDateTimeObject < todayDateTime ||
-      dropOffDateTimeObject < pickUpDateTimeObject
-      ? null
-      : { invalidDates: { value: control.value } };
+    return pickUpDateTimeObject <= todayDateTime ||
+      dropOffDateTimeObject <= pickUpDateTimeObject
+      ? { invalidDates: { value: control.value } }
+      : null;
   }
 
   private locationValidator(locations: RentalLocation[]): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       for (let location of locations) {
-        if (location.id == control.value?.id) {
+        if (location.id == control.value) {
           return null;
         }
       }
