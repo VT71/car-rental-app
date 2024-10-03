@@ -8,11 +8,22 @@ import { Car } from '../../interfaces/car';
   providedIn: 'root',
 })
 export class CarsApiService {
-  private apiUrl = environment.api.serverUrl;
+  private apiUrl = environment.api.serverUrl + '/Car';
 
   private http = inject(HttpClient);
 
   getAll(): Observable<Car[]> {
-    return this.http.get<Car[]>(`${this.apiUrl}/Car`);
+    return this.http.get<Car[]>(`${this.apiUrl}`);
+  }
+
+  getAvailableCars(
+    pickUpLocationId: number,
+    dropOffLocationId: number,
+    pickUpdateTime: string,
+    dropOffDateTime: string
+  ): Observable<Car[]> {
+    return this.http.get<Car[]>(
+      `${this.apiUrl}/${pickUpLocationId}/${dropOffLocationId}/${pickUpdateTime}/${dropOffDateTime}`
+    );
   }
 }
