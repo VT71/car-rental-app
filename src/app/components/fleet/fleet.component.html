@@ -1,5 +1,5 @@
 <div class="fleet-wrapper">
-  @if($apiCars | async; as apiCars) { @for (car of apiCars; track car) {
+  @if(cars) { @for (car of cars; track car) {
   <div class="fleet-item">
     <div class="image-wrapper">
       <img [src]="car.pictureUrl" />
