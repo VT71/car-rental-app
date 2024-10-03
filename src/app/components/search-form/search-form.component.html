@@ -1,6 +1,7 @@
 @if (type === "home") {
 <h2 class="search-form-heading">Search your car</h2>
 } @if (locationsData) {
+
 <form class="search-form" [formGroup]="searchForm" (submit)="onSubmit()">
   <mat-form-field appearance="outline">
     <mat-error>Select a pick-up location</mat-error>

@@ -8,7 +8,14 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { LocationsApiService } from '../../services/locations-api-service/locations-api.service';
-import { combineLatest, forkJoin, from, Observable, Subscription } from 'rxjs';
+import {
+  combineLatest,
+  concatMap,
+  forkJoin,
+  from,
+  Observable,
+  Subscription,
+} from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { RentalLocation } from '../../interfaces/rental-location';
 import {
@@ -21,7 +28,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-form',
@@ -46,6 +53,8 @@ import { Router } from '@angular/router';
 export class SearchFormComponent implements OnInit, OnDestroy {
   @Input() type!: string;
 
+  private route = inject(ActivatedRoute);
+
   private subscriptions: Subscription[] = [];
 
   private locationsApiService = inject(LocationsApiService);
@@ -64,26 +73,13 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   private formBuilder = inject(FormBuilder);
   public searchForm = this.formBuilder.group(
     {
-      pickUpLocation: [null, [Validators.required]],
-      dropOffLocation: [null, [Validators.required]],
-      pickUpDateTime: [null, [Validators.required]],
-      dropOffDateTime: [null, [Validators.required]],
+      pickUpLocation: [0, [Validators.required]],
+      dropOffLocation: [0, [Validators.required]],
+      pickUpDateTime: [new Date(), [Validators.required]],
+      dropOffDateTime: [new Date(), [Validators.required]],
     },
     { validators: this.datesValidator }
   );
-
-  onSubmit() {
-    if (this.searchForm.valid) {
-      this.router.navigate(['fleet'], {
-        queryParams: {
-          pickUpLocation: this.searchForm.get('pickUpLocation')?.value,
-          dropOffLocation: this.searchForm.get('dropOffLocation')?.value,
-          pickUpDateTime: this.searchForm.get('pickUpDateTime')?.value,
-          dropOffDateTime: this.searchForm.get('dropOffDateTime')?.value,
-        },
-      });
-    }
-  }
 
   private datesValidator(control: AbstractControl): ValidationErrors | null {
     const pickUpDateTimeInput = control.get('pickUpDateTime');
@@ -125,21 +121,86 @@ export class SearchFormComponent implements OnInit, OnDestroy {
     };
   }
 
-  ngOnInit() {
+  private initialiseForm() {
     this.subscriptions.push(
-      this.$locationsData.subscribe((data) => {
-        this.locationsData = data;
-        this.searchForm
-          .get('pickUpLocation')
-          ?.addValidators(this.locationValidator(this.locationsData[0]));
+      this.$locationsData
+        .pipe(
+          concatMap((data) => {
+            this.locationsData = data;
+            this.searchForm
+              .get('pickUpLocation')
+              ?.addValidators(this.locationValidator(this.locationsData[0]));
 
-        this.searchForm
-          .get('dropOffLocation')
-          ?.addValidators(this.locationValidator(this.locationsData[1]));
+            this.searchForm
+              .get('dropOffLocation')
+              ?.addValidators(this.locationValidator(this.locationsData[1]));
 
-        this.searchForm.reset();
-      })
+            this.searchForm.reset();
+            return this.route.queryParamMap;
+          })
+        )
+        .subscribe((queryParamMap) => {
+          if (this.type === 'fleet') {
+            const pickUpLocationId: string | null =
+              queryParamMap.get('pickUpLocation');
+            const dropOffLocationId: string | null =
+              queryParamMap.get('dropOffLocation');
+            const pickUpDateTime: string | null =
+              queryParamMap.get('pickUpDateTime');
+            const dropOffDateTime: string | null =
+              queryParamMap.get('dropOffDateTime');
+
+            if (pickUpLocationId !== null && !isNaN(Number(pickUpLocationId))) {
+              this.searchForm
+                .get('pickUpLocation')
+                ?.setValue(Number(pickUpLocationId));
+            }
+            if (
+              dropOffLocationId !== null &&
+              !isNaN(Number(dropOffLocationId))
+            ) {
+              this.searchForm
+                .get('dropOffLocation')
+                ?.setValue(Number(dropOffLocationId));
+            }
+
+            if (
+              pickUpDateTime !== null &&
+              !isNaN(new Date(pickUpDateTime).valueOf())
+            ) {
+              this.searchForm
+                .get('pickUpDateTime')
+                ?.setValue(new Date(pickUpDateTime));
+            }
+
+            if (
+              dropOffDateTime !== null &&
+              !isNaN(new Date(dropOffDateTime).valueOf())
+            ) {
+              this.searchForm
+                .get('dropOffDateTime')
+                ?.setValue(new Date(dropOffDateTime));
+            }
+          }
+        })
     );
+  }
+
+  onSubmit() {
+    if (this.searchForm.valid) {
+      this.router.navigate(['fleet'], {
+        queryParams: {
+          pickUpLocation: this.searchForm.get('pickUpLocation')?.value,
+          dropOffLocation: this.searchForm.get('dropOffLocation')?.value,
+          pickUpDateTime: this.searchForm.get('pickUpDateTime')?.value,
+          dropOffDateTime: this.searchForm.get('dropOffDateTime')?.value,
+        },
+      });
+    }
+  }
+
+  ngOnInit() {
+    this.initialiseForm();
   }
 
   ngOnDestroy() {
