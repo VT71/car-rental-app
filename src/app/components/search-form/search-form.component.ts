@@ -44,7 +44,7 @@ import { Router } from '@angular/router';
   styleUrl: './search-form.component.css',
 })
 export class SearchFormComponent implements OnInit, OnDestroy {
-  @Input() showFormTitle!: boolean;
+  @Input() type!: string;
 
   private subscriptions: Subscription[] = [];
 
