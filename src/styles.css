@@ -12,6 +12,8 @@
   --primary-font: "Roboto", sans-serif;
   --nav-rail-width: 80px;
   --nav-bar-height: 80px;
+  --section-padding: 1rem;
+  --section-border-radius: 16px;
 }
 
 html,

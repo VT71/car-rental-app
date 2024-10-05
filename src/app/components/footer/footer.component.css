@@ -6,7 +6,7 @@ footer,
 .content-wrapper {
   background-color: var(--background-color2);
   border-radius: 16px;
-  padding: 1rem;
+  padding: var(--section-padding);
 }
 
 h2 {
