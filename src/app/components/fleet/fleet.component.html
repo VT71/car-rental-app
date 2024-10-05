@@ -27,7 +27,9 @@
         {{ car.description }}
       </p>
     </div>
-    <button class="filled-tonal">Book Now</button>
+    <button class="filled-tonal" [routerLink]="'car/' + car.id">
+      Book Now
+    </button>
   </div>
   } } @else {
   <p>No cars found</p>
