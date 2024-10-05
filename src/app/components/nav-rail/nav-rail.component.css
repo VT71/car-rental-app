@@ -41,7 +41,6 @@
 }
 
 .nav-rail-item > .label {
-  font-family: var(--primary-font);
   font-weight: 600;
   font-size: 0.8rem;
   text-align: center;

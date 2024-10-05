@@ -47,7 +47,6 @@
 }
 
 .price-container > .price {
-  font-family: var(--primary-font);
   font-weight: 600;
   color: var(--tertiary-color);
   margin: 0;
@@ -61,7 +60,6 @@
 }
 
 .fleet-item > .description-wrapper > .title {
-  font-family: var(--primary-font);
   font-weight: 500;
   font-size: 1.2rem;
   margin: 0;
@@ -69,7 +67,6 @@
 }
 
 .fleet-item > .description-wrapper > .description {
-  font-family: var(--primary-font);
   font-weight: 400;
   font-size: 0.7rem;
   margin: 0;
@@ -96,7 +93,6 @@
 }
 
 .stat > p {
-  font-family: var(--primary-font);
   font-weight: 400;
   font-size: 0.6rem;
 }

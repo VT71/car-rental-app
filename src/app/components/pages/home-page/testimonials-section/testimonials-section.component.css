@@ -40,7 +40,6 @@
   margin: 0;
   font-size: 1.4rem;
   font-weight: 500;
-  font-family: var(--primary-font);
 }
 
 .description-wrapper {
@@ -56,13 +55,11 @@
 .description-wrapper > .description {
   width: 100%;
   margin: 0;
-  font-family: var(--primary-font);
   font-weight: 300;
 }
 
 .description-wrapper > .date {
   margin: 0;
-  font-family: var(--primary-font);
   font-weight: 400;
   width: 100%;
   text-align: right;

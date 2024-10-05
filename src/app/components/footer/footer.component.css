@@ -10,7 +10,6 @@ footer,
 }
 
 h2 {
-  font-family: var(--primary-font);
   font-size: 1.4rem;
   margin-top: 0;
   margin-bottom: 2rem;
@@ -22,7 +21,6 @@ h2 {
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-  font-family: var(--primary-font);
   font-weight: 300;
 }
 
