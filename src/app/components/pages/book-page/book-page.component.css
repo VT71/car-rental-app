@@ -8,11 +8,11 @@
   margin-top: 2rem;
   background-color: var(--primary-color-10);
   border-radius: var(--section-border-radius);
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .form-container {
-  width: 68%;
+  width: 69%;
   border-radius: var(--section-border-radius);
   height: 1000px;
   background-color: var(--tertiary-color);
@@ -29,7 +29,7 @@ form > .column {
 }
 
 .car-tile {
-  width: 28%;
+  width: 29%;
   height: 400px;
   width: calc(100% - 70% - 2rem);
   background-color: var(--tertiary-color);
