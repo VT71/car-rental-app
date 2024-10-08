@@ -1,22 +1,40 @@
+.root-container {
+     
+}
+
 .booking-container {
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
+  background-color: var(--primary-color-10);
+  border-radius: var(--section-border-radius);
+  padding: 1rem;
 }
 
 .form-container {
-  width: 70%;
-  background-color: var(--background-color2);
+  width: 68%;
   border-radius: var(--section-border-radius);
   height: 1000px;
+  background-color: var(--tertiary-color);
+  padding: 1rem;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+}
+
+form > .column {
+  width: 49%;
 }
 
 .car-tile {
+  width: 28%;
   height: 400px;
   width: calc(100% - 70% - 2rem);
-  background-color: var(--background-color2);
+  background-color: var(--tertiary-color);
   border-radius: 16px;
-  padding: 0.5rem;
+  padding: 1rem;
   cursor: pointer;
   position: sticky;
   top: 0;

@@ -1,50 +1,59 @@
-<section class="root-container">
-  <div class="content-wrapper">
-    <h1>Book Now</h1>
-    <div class="booking-container">
-      <div class="form-container">
-        <form [formGroup]="formGroup">
-          <mat-form-field appearance="outline">
-            <mat-label>Driver's Full Name</mat-label>
-            <input
-              matInput
-              type="text"
-              formControlName="driversFullName"
-              required
-            />
-          </mat-form-field>
-        </form>
-      </div>
-      @if ($car| async; as car) {
-      <div class="car-tile">
-        <div class="image-wrapper">
-          <img [src]="car.pictureUrl" />
-          <!-- <div class="price-container">
+<div class="root-container page">
+  <section class="root-container">
+    <div class="content-wrapper">
+      <h1>Book Now</h1>
+      <div class="booking-container">
+        <div class="form-container">
+          <form [formGroup]="formGroup">
+            <div class="column">
+              <mat-form-field appearance="outline">
+                <mat-label>Driver's Full Name</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  formControlName="driversFullName"
+                  required
+                />
+              </mat-form-field>
+            </div>
+            <div class="column"></div>
+          </form>
+        </div>
+        @if ($car| async; as car) {
+        <div class="car-tile">
+          <div class="image-wrapper">
+            <img [src]="car.pictureUrl" />
+            <!-- <div class="price-container">
               <p class="price">From {{ currencySign }}{{ car.dayPrice }}/Day</p>
             </div> -->
-        </div>
-        <div class="description-wrapper">
-          <p class="title">{{ car.make.name }} {{ car.model }}</p>
-          <div class="stats-container">
-            <div class="stat">
-              <span class="material-symbols-outlined"> auto_transmission </span>
-              <p>{{ car.transmissionType === 0 ? "auto" : "manual" }}</p>
-            </div>
-            <div class="stat">
-              <span class="material-symbols-outlined"> local_gas_station </span>
-              <p>{{ car.rangeKm }}KM</p>
-            </div>
-            <div class="stat">
-              <span class="material-symbols-outlined"> bolt </span>
-              <p>{{ car.powerHp }} HP</p>
-            </div>
           </div>
-          <p class="description">
-            {{ car.description }}
-          </p>
+          <div class="description-wrapper">
+            <p class="title">{{ car.make.name }} {{ car.model }}</p>
+            <div class="stats-container">
+              <div class="stat">
+                <span class="material-symbols-outlined">
+                  auto_transmission
+                </span>
+                <p>{{ car.transmissionType === 0 ? "auto" : "manual" }}</p>
+              </div>
+              <div class="stat">
+                <span class="material-symbols-outlined">
+                  local_gas_station
+                </span>
+                <p>{{ car.rangeKm }}KM</p>
+              </div>
+              <div class="stat">
+                <span class="material-symbols-outlined"> bolt </span>
+                <p>{{ car.powerHp }} HP</p>
+              </div>
+            </div>
+            <p class="description">
+              {{ car.description }}
+            </p>
+          </div>
         </div>
+        }
       </div>
-      }
     </div>
-  </div>
-</section>
+  </section>
+</div>
