@@ -2,7 +2,19 @@
   <div class="content-wrapper">
     <h1>Book Now</h1>
     <div class="booking-container">
-      <div class="form-container"></div>
+      <div class="form-container">
+        <form [formGroup]="formGroup">
+          <mat-form-field appearance="outline">
+            <mat-label>Driver's Full Name</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="driversFullName"
+              required
+            />
+          </mat-form-field>
+        </form>
+      </div>
       @if ($car| async; as car) {
       <div class="car-tile">
         <div class="image-wrapper">
