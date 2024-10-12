@@ -5,6 +5,9 @@
       <div class="booking-container">
         <div class="form-container">
           <form [formGroup]="formGroup">
+            <div class="full-column">
+              <p class="section-title">Personal Info</p>
+            </div>
             <div class="column">
               <mat-form-field appearance="outline">
                 <mat-label>Driver's Full Name</mat-label>
@@ -15,17 +18,26 @@
                   required
                 />
               </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Driver's Phone Number</mat-label>
+                <input
+                  matInput
+                  type="tel"
+                  formControlName="driversFullName"
+                  required
+                />
+              </mat-form-field>
             </div>
             <div class="column">
-                <mat-form-field appearance="outline">
-                    <mat-label>Driver's Phone Number</mat-label>
-                    <input
-                      matInput
-                      type="tel"
-                      formControlName="driversFullName"
-                      required
-                    />
-                  </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Driver's Age (On Pick Up)</mat-label>
+                <input
+                  matInput
+                  type="number"
+                  formControlName="driversAge"
+                  required
+                />
+              </mat-form-field>
             </div>
           </form>
         </div>
