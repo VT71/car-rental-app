@@ -15,6 +15,7 @@ import { RouterLink } from '@angular/router';
 })
 export class FleetComponent {
   @Input() cars!: Car[];
+  @Input() type!: string; 
 
   public currencySign = environment.currency.sign;
 }

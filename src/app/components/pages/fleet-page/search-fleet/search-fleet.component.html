@@ -4,6 +4,6 @@
     <app-search-form type="fleet"></app-search-form>
   </div>
   @if ($carsData| async; as carsData) {
-  <app-fleet [cars]="carsData"></app-fleet>
+  <app-fleet [cars]="carsData" [type]="'searchFleet'"></app-fleet>
   }
 </section>
