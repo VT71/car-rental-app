@@ -45,6 +45,7 @@ export class BookPageComponent {
     public formGroup = this.formBuilder.group({
         driversFullName: ["", [Validators.required, Validators.min(3), Validators.max(255)]],
         driversAge: [null, [Validators.required, Validators.min(18)]],
-        driversPhoneNo: ["", [Validators.required, Validators.min(6), Validators.max(20)]]
+        driversPhoneNo: ["", [Validators.required, Validators.min(6), Validators.max(20)]],
+        driversEmail: ["", [Validators.required, Validators.email]]
     })
 }
