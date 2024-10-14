@@ -46,7 +46,8 @@ export class BookPageComponent {
         driversFullName: ["", [Validators.required, Validators.min(3), Validators.max(255)]],
         driversAge: [null, [Validators.required, Validators.min(18)]],
         driversPhoneNo: ["", [Validators.required, Validators.min(6), Validators.max(20)]],
-        driversEmail: ["", [Validators.required, Validators.email]],
-        driversAddress: ["", [Validators.required, Validators.min(3), Validators.max(255)]]
+        driversEmail: ["", [Validators.required, Validators.email, Validators.max(255)]],
+        driversAddress: ["", [Validators.required, Validators.min(3), Validators.max(255)]],
+        driversPostcode: ["", [Validators.required, Validators.min(2), Validators.max(12)]]
     })
 }
