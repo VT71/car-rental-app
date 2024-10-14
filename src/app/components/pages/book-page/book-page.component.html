@@ -4,6 +4,7 @@
       <h1>Book Now</h1>
       <div class="booking-container">
         <div class="form-container">
+          @if (countries.length > 0) {
           <form [formGroup]="formGroup">
             <div class="full-column">
               <p class="section-title">Driver's Personal Info</p>
@@ -99,11 +100,14 @@
                 <mat-label>Country</mat-label>
                 <mat-error>Country is required.</mat-error>
                 <mat-select>
-                  <mat-option value="option1">Option 1</mat-option>
+                  @for (country of countries; track country) {
+                  <mat-option [value]="country">{{ country }}</mat-option
+                  >}
                 </mat-select>
               </mat-form-field>
             </div>
           </form>
+          }
         </div>
         @if ($car| async; as car) {
         <div class="car-tile">

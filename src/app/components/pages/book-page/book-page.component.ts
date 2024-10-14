@@ -1,12 +1,13 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Observable, of, Subscription } from 'rxjs';
 import { Car } from '../../../interfaces/car';
 import { environment } from '../../../../environments/environment.development';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { BookingsApiService } from '../../../services/bookings-api-service/bookings-api.service';
 
 @Component({
     selector: 'app-book-page',
@@ -15,7 +16,11 @@ import { MatSelectModule } from '@angular/material/select';
     templateUrl: './book-page.component.html',
     styleUrl: './book-page.component.css',
 })
-export class BookPageComponent {
+export class BookPageComponent implements OnInit, OnDestroy {
+    private bookingsApiService = inject(BookingsApiService);
+    private subscriptions: Subscription[] = [];
+
+    public countries!: string[];
     public $car: Observable<Car> = of({
         id: 1,
         makeId: 1,
@@ -52,4 +57,24 @@ export class BookPageComponent {
         driversPostcode: ["", [Validators.required, Validators.min(2), Validators.max(12)]],
         driversCountry: ["", [Validators.required]]
     })
+
+    ngOnInit(): void {
+        const countryValidator = (countries: string[]): ValidatorFn => {
+            return (control: AbstractControl): ValidationErrors | null => {
+                const validCountry = countries.includes(control.value);
+                return validCountry ? null : { invalidCountry: { value: control.value } }
+            }
+        }
+
+        this.subscriptions.push(this.bookingsApiService.getAllCountries().subscribe(countries => {
+            this.countries = countries;
+            this.formGroup.controls.driversCountry.addValidators(countryValidator(countries));
+        }));
+    }
+
+    ngOnDestroy(): void {
+        for (const subscription of this.subscriptions) {
+            subscription.unsubscribe();
+        }
+    }
 }
