@@ -145,3 +145,9 @@ button.filled-tonal:hover {
   height: 56px !important;
   color: var(--background-color2) !important;
 }
+
+.secondary.mdc-button.mdc-button--unelevated.mat-mdc-unelevated-button.mat-unthemed.mat-mdc-button-base {
+  background-color: var(--background-color2) !important;
+  height: 56px !important;
+  color: var(--secondary-color) !important;
+}

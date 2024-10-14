@@ -8,11 +8,12 @@ import { MatInputModule } from '@angular/material/input';
 import { AbstractControl, FormBuilder, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { BookingsApiService } from '../../../services/bookings-api-service/bookings-api.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
     selector: 'app-book-page',
     standalone: true,
-    imports: [AsyncPipe, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatSelectModule],
+    imports: [AsyncPipe, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatSelectModule, MatButtonModule],
     templateUrl: './book-page.component.html',
     styleUrl: './book-page.component.css',
 })
