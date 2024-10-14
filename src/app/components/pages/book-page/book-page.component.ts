@@ -6,11 +6,12 @@ import { environment } from '../../../../environments/environment.development';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
     selector: 'app-book-page',
     standalone: true,
-    imports: [AsyncPipe, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
+    imports: [AsyncPipe, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatSelectModule],
     templateUrl: './book-page.component.html',
     styleUrl: './book-page.component.css',
 })
@@ -48,6 +49,7 @@ export class BookPageComponent {
         driversPhoneNo: ["", [Validators.required, Validators.min(6), Validators.max(20)]],
         driversEmail: ["", [Validators.required, Validators.email, Validators.max(255)]],
         driversAddress: ["", [Validators.required, Validators.min(3), Validators.max(255)]],
-        driversPostcode: ["", [Validators.required, Validators.min(2), Validators.max(12)]]
+        driversPostcode: ["", [Validators.required, Validators.min(2), Validators.max(12)]],
+        driversCountry: ["", [Validators.required]]
     })
 }

@@ -79,7 +79,7 @@
                 />
               </mat-form-field>
             </div>
-            <div>
+            <div class="column">
               <mat-form-field appearance="outline">
                 <mat-label>Postcode</mat-label>
                 <mat-error
@@ -92,6 +92,15 @@
                   formControlName="driversPostcode"
                   required
                 />
+              </mat-form-field>
+            </div>
+            <div class="column">
+              <mat-form-field appearance="outline">
+                <mat-label>Country</mat-label>
+                <mat-error>Country is required.</mat-error>
+                <mat-select>
+                  <mat-option value="option1">Option 1</mat-option>
+                </mat-select>
               </mat-form-field>
             </div>
           </form>
