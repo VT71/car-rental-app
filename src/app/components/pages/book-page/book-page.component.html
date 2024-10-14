@@ -99,7 +99,7 @@
               <mat-form-field appearance="outline">
                 <mat-label>Country</mat-label>
                 <mat-error>Country is required.</mat-error>
-                <mat-select>
+                <mat-select formControlName="driversCountry" required>
                   @for (country of countries; track country) {
                   <mat-option [value]="country">{{ country }}</mat-option
                   >}
