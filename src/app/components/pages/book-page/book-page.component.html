@@ -48,6 +48,20 @@
                 />
               </mat-form-field>
             </div>
+            <div class="full-column">
+              <p class="section-title">Address</p>
+            </div>
+            <div class="full-column">
+              <mat-form-field appearance="outline">
+                <mat-label>Street Name and Number</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  formControlName="driversAddress"
+                  required
+                />
+              </mat-form-field>
+            </div>
           </form>
         </div>
         @if ($car| async; as car) {
