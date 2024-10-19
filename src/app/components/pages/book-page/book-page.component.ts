@@ -9,6 +9,7 @@ import { AbstractControl, FormBuilder, ReactiveFormsModule, ValidationErrors, Va
 import { MatSelectModule } from '@angular/material/select';
 import { BookingsApiService } from '../../../services/bookings-api-service/bookings-api.service';
 import { MatButtonModule } from '@angular/material/button';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
     selector: 'app-book-page',
@@ -19,7 +20,11 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class BookPageComponent implements OnInit, OnDestroy {
     private bookingsApiService = inject(BookingsApiService);
+    private route = inject(ActivatedRoute);
+
     private subscriptions: Subscription[] = [];
+
+    private queryParams!: ParamMap;
 
     public countries!: string[];
     public $car: Observable<Car> = of({
@@ -58,6 +63,10 @@ export class BookPageComponent implements OnInit, OnDestroy {
         driversPostcode: ["", [Validators.required, Validators.min(2), Validators.max(12)]],
         driversCountry: ["", [Validators.required]]
     })
+
+    onEditSearch(): void {
+
+    }
 
     ngOnInit(): void {
         const countryValidator = (countries: string[]): ValidatorFn => {

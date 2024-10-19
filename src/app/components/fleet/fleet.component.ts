@@ -13,28 +13,17 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
     templateUrl: './fleet.component.html',
     styleUrl: './fleet.component.css',
 })
-export class FleetComponent implements OnDestroy {
+export class FleetComponent {
     @Input() cars!: Car[];
     @Input() type!: string;
 
     private route = inject(ActivatedRoute);
     private router = inject(Router);
-    private subscriptions: Subscription[] = [];
 
     public currencySign = environment.currency.sign;
 
     bookHandler(carId: number) {
-        this.subscriptions.push(this.route.queryParamMap.subscribe(queryParams => {
-            if (queryParams.get("pickUpLocation") && queryParams.get("dropOffLocation") && queryParams.get("pickUpDateTime") && queryParams.get("dropOffDateTime")) {
-                this.router.navigateByUrl(`/book/${carId}?pickUpLocation=${queryParams.get("pickUpLocation")}&dropOffLocation=${queryParams.get("dropOffLocation")}&pickUpDateTime=${queryParams.get("pickUpDateTime")}&dropOffDateTime=${queryParams.get("dropOffDateTime")}`);
-            }
-        }));
-    }
-
-    ngOnDestroy(): void {
-        for (let subscription of this.subscriptions) {
-            subscription.unsubscribe();
-        }
+        this.router.navigate(['/book', carId], { queryParams: this.route.snapshot.queryParams })
     }
 
 }
