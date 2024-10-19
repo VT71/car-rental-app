@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable, of, Subscription } from 'rxjs';
 import { Car } from '../../../interfaces/car';
 import { environment } from '../../../../environments/environment.development';
@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { BookingsApiService } from '../../../services/bookings-api-service/bookings-api.service';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { CarsApiService } from '../../../services/cars-api-service/cars-api.service';
 
 @Component({
     selector: 'app-book-page',
@@ -19,36 +20,17 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
     styleUrl: './book-page.component.css',
 })
 export class BookPageComponent implements OnInit, OnDestroy {
+    @Input() id!: number;
+
     private bookingsApiService = inject(BookingsApiService);
+    private carsApiService = inject(CarsApiService);
     private route = inject(ActivatedRoute);
     private router = inject(Router);
 
     private subscriptions: Subscription[] = [];
 
     public countries: string[] = [];
-    public $car: Observable<Car> = of({
-        id: 1,
-        makeId: 1,
-        make: {
-            id: 1,
-            name: 'Jeep',
-            cars: [],
-        },
-        model: 'Wrangler',
-        description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-        pictureUrl:
-            'https://drive.google.com/thumbnail?id=1pXzXrCSDQZgwikd41iXOx1snt1CEVmqx',
-        dayPrice: 80,
-        deposit: 250,
-        seats: 5,
-        doors: 4,
-        transmissionType: 0,
-        powerHp: 280,
-        rangeKm: 650,
-        available: true,
-        bookings: [],
-    });
+    public $car!: Observable<Car>;
 
     public currencySign = environment.currency.sign;
 
@@ -68,6 +50,10 @@ export class BookPageComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        if (this.id) {
+            this.$car = this.carsApiService.getById(this.id);
+        }
+
         const countryValidator = (countries: string[]): ValidatorFn => {
             return (control: AbstractControl): ValidationErrors | null => {
                 const validCountry = countries.includes(control.value);

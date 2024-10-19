@@ -5,25 +5,29 @@ import { Observable } from 'rxjs';
 import { Car } from '../../interfaces/car';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class CarsApiService {
-  private apiUrl = environment.api.serverUrl + '/Car';
+    private apiUrl = environment.api.serverUrl + '/Car';
 
-  private http = inject(HttpClient);
+    private http = inject(HttpClient);
 
-  getAll(): Observable<Car[]> {
-    return this.http.get<Car[]>(`${this.apiUrl}`);
-  }
+    getAll(): Observable<Car[]> {
+        return this.http.get<Car[]>(`${this.apiUrl}`);
+    }
 
-  getAvailableCars(
-    pickUpLocationId: number,
-    dropOffLocationId: number,
-    pickUpdateTime: string,
-    dropOffDateTime: string
-  ): Observable<Car[]> {
-    return this.http.get<Car[]>(
-      `${this.apiUrl}/${pickUpLocationId}/${dropOffLocationId}/${pickUpdateTime}/${dropOffDateTime}`
-    );
-  }
+    getById(carId: number): Observable<Car> {
+        return this.http.get<Car>(`${this.apiUrl}/${carId}`);
+    }
+
+    getAvailableCars(
+        pickUpLocationId: number,
+        dropOffLocationId: number,
+        pickUpdateTime: string,
+        dropOffDateTime: string
+    ): Observable<Car[]> {
+        return this.http.get<Car[]>(
+            `${this.apiUrl}/${pickUpLocationId}/${dropOffLocationId}/${pickUpdateTime}/${dropOffDateTime}`
+        );
+    }
 }
