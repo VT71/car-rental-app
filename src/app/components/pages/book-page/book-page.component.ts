@@ -9,7 +9,7 @@ import { AbstractControl, FormBuilder, ReactiveFormsModule, ValidationErrors, Va
 import { MatSelectModule } from '@angular/material/select';
 import { BookingsApiService } from '../../../services/bookings-api-service/bookings-api.service';
 import { MatButtonModule } from '@angular/material/button';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
     selector: 'app-book-page',
@@ -21,10 +21,9 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 export class BookPageComponent implements OnInit, OnDestroy {
     private bookingsApiService = inject(BookingsApiService);
     private route = inject(ActivatedRoute);
+    private router = inject(Router);
 
     private subscriptions: Subscription[] = [];
-
-    private queryParams!: ParamMap;
 
     public countries: string[] = [];
     public $car: Observable<Car> = of({
@@ -65,7 +64,7 @@ export class BookPageComponent implements OnInit, OnDestroy {
     })
 
     onEditSearch(): void {
-
+        this.router.navigate(['/fleet'], { queryParams: this.route.snapshot.queryParams });
     }
 
     ngOnInit(): void {
