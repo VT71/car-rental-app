@@ -26,7 +26,7 @@ export class BookPageComponent implements OnInit, OnDestroy {
 
     private queryParams!: ParamMap;
 
-    public countries!: string[];
+    public countries: string[] = [];
     public $car: Observable<Car> = of({
         id: 1,
         makeId: 1,
