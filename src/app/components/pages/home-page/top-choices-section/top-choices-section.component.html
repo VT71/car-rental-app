@@ -1,6 +1,6 @@
+@if ($cars | async; as cars) { @if (cars.length > 0) {
 <section id="home-fleeet-section" class="root-container">
   <h2 class="section-heading">Our Top Choices</h2>
-  @if ($cars | async; as cars) {
   <app-fleet [cars]="cars"></app-fleet>
-  }
 </section>
+} }
