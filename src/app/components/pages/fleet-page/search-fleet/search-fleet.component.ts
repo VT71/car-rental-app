@@ -8,11 +8,10 @@ import { Car } from '../../../../interfaces/car';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-search-fleet',
-  standalone: true,
-  imports: [SearchFormComponent, FleetComponent, AsyncPipe],
-  templateUrl: './search-fleet.component.html',
-  styleUrl: './search-fleet.component.css',
+    selector: 'app-search-fleet',
+    imports: [SearchFormComponent, FleetComponent, AsyncPipe],
+    templateUrl: './search-fleet.component.html',
+    styleUrl: './search-fleet.component.css'
 })
 export class SearchFleetComponent implements OnInit {
   private carsApiService = inject(CarsApiService);

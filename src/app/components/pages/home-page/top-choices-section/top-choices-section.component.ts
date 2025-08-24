@@ -4,11 +4,10 @@ import { CarsApiService } from '../../../../services/cars-api-service/cars-api.s
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-top-choices-section',
-  standalone: true,
-  imports: [FleetComponent, AsyncPipe],
-  templateUrl: './top-choices-section.component.html',
-  styleUrl: './top-choices-section.component.css',
+    selector: 'app-top-choices-section',
+    imports: [FleetComponent, AsyncPipe],
+    templateUrl: './top-choices-section.component.html',
+    styleUrl: './top-choices-section.component.css'
 })
 export class TopChoicesSectionComponent {
   private carsApiService = inject(CarsApiService);

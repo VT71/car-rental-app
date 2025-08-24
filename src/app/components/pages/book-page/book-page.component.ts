@@ -14,10 +14,9 @@ import { CarsApiService } from '../../../services/cars-api-service/cars-api.serv
 
 @Component({
     selector: 'app-book-page',
-    standalone: true,
     imports: [AsyncPipe, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatSelectModule, MatButtonModule],
     templateUrl: './book-page.component.html',
-    styleUrl: './book-page.component.css',
+    styleUrl: './book-page.component.css'
 })
 export class BookPageComponent implements OnInit, OnDestroy {
     @Input() id!: number;

@@ -8,10 +8,9 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-fleet',
-    standalone: true,
     imports: [AsyncPipe, RouterLink],
     templateUrl: './fleet.component.html',
-    styleUrl: './fleet.component.css',
+    styleUrl: './fleet.component.css'
 })
 export class FleetComponent {
     @Input() cars!: Car[];

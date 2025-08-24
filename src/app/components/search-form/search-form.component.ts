@@ -31,24 +31,23 @@ import {
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-search-form',
-  standalone: true,
-  providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-    provideNativeDateAdapter(),
-  ],
-  imports: [
-    MatIconModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatButtonModule,
-    AsyncPipe,
-    ReactiveFormsModule,
-  ],
-  templateUrl: './search-form.component.html',
-  styleUrl: './search-form.component.css',
+    selector: 'app-search-form',
+    providers: [
+        { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+        provideNativeDateAdapter(),
+    ],
+    imports: [
+        MatIconModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatButtonModule,
+        AsyncPipe,
+        ReactiveFormsModule,
+    ],
+    templateUrl: './search-form.component.html',
+    styleUrl: './search-form.component.css'
 })
 export class SearchFormComponent implements OnInit, OnDestroy {
   @Input() type!: string;
